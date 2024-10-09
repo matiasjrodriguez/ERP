@@ -54,3 +54,7 @@ def dashboard():
 def custom_404_handler(request: Request, exc: StarletteHTTPException):
     if exc.status_code == 404:
         return FileResponse("./templates/loader.html")
+
+@app.head("/")
+async def head_root():
+    return {}
