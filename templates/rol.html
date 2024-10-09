@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es-419">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roles</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <input type="checkbox" class="theme-checkbox" id="toggle-dark-mode">
+    </nav>
+    <main>
+        <fieldset>
+            <legend>Formulario</legend>
+            <form>
+                <input class="userpass" type="text" id="usuario" required placeholder="Usuario"> 
+                <input class="userpass" type="password" id="contraseña" required placeholder="Contraseña"> 
+                <select name="rol" id="roles">
+                    <option value="none">Seleccione rol...</option>
+                    <option value="admin">Administrador</option>
+                    <option value="vendedor">Vendedor</option>
+                </select>
+                <button class="boton">Confirmar</button>
+            </form>
+        </fieldset>
+    </main>
+    <script>
+            /*DARKMODE FUNCTION*/
+    document.getElementById('toggle-dark-mode').addEventListener('click', function() {
+    const body = document.body;
+    if (body.classList.contains('darkbody')) {
+        body.classList.remove('darkbody');
+        body.classList.add('whitemode');
+    } else {
+        body.classList.remove('whitemode');
+        body.classList.add('darkbody');
+    }
+});
+    </script>
+</body>
+</html>

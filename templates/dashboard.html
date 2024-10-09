@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Milagrosa</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <input type="checkbox" class="theme-checkbox" id="toggle-dark-mode">
+    </nav>
+
+    <button class="enviar" onclick="redirigir('/productos')">Productos</button>
+    <button class="enviar" onclick="redirigir('/promociones')">Promociones</button>
+    <button class="enviar" onclick="redirigir('/vencimientos')">Vencimientos</button>
+    <button class="enviar" onclick="redirigir('/configuracion')">Configuración</button>
+
+    <script>
+        document.getElementById('toggle-dark-mode').addEventListener('click', function() {
+            const body = document.body;
+            if (body.classList.contains('darkbody')) {
+                body.classList.remove('darkbody');
+                body.classList.add('whitemode');
+            } else {
+                body.classList.remove('whitemode');
+                body.classList.add('darkbody');
+            }
+        })
+        function redirigir(ruta) {
+            window.location.href = ruta;
+        }
+    </script>
+</body>
+</html>

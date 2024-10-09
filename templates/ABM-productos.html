@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="darkbody whitemode">
+    <nav class="navbar">
+        <input type="checkbox" class="theme-checkbox" id="toggle-dark-mode">
+    </nav>
+    <h1>Cargar Producto</h1>
+    <form action="localhost:8000/tbd" method="post" class="form">
+        <label for="barcode" class="required">
+            Código de barras
+        </label>
+        <input type="text" id="barcode" name="barcode" placeholder="2011000064754" required>
+
+        <label for="producto" class="required">
+            Producto
+        </label>
+        <input type="text" id="producto" name="producto" placeholder="Milanesa de pollo" required>
+
+        <label for="descripcion">
+            Descripción
+        </label>
+        <input type="text" id="descripcion" name="descripcion" placeholder="Descripción del producto">
+
+        <label for="valor" class="required">
+            Valor en $
+        </label>
+        <input type="number" id="valor" name="descripcion" placeholder="5000" required>
+
+        <label for="costo" class="required">
+            Costo en $
+        </label>
+        <input type="number" id="costo" name="costo" placeholder="5000" required>
+
+        <label for="stock" class="required">
+            Stock
+        </label>
+        <input type="number" id="stock" name="stock" placeholder="20" required>
+
+        <label for="medida" class="required">
+            Medida
+        </label>
+        <select name="medida" id="medida">
+            <option value="unidad">Unidad</option>
+            <option value="kg">kg</option>
+            <option value="g">Gramos</option>
+        </select>
+
+        <button class="enviar" type="submit">Enviar</button> 
+        
+    </form> 
+
+    <script>
+document.getElementById('toggle-dark-mode').addEventListener('click', function() {
+    const body = document.body;
+    if (body.classList.contains('whitemode')) {
+        body.classList.remove('whitemode');
+        body.classList.add('darkbody');
+    } else {
+        body.classList.remove('darkbody');
+        body.classList.add('whitemode');
+    }
+});
+    </script>
+</body>
+</html>

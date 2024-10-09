@@ -1,0 +1,122 @@
+body{
+    font-family: sans-serif;
+}
+
+
+.darkbody {
+    background-color: #212121;
+    transition: 300ms;
+    color: aliceblue;
+}
+
+.whitemode{
+    background-color: white;
+    transition: 300ms;
+    color: #212121;
+}
+
+.whitemode input{
+    border: solid 1px #212121;
+}
+
+
+.whitemode .enviar{
+    background-color: #636363;
+    color: white;
+    transition: 300ms;
+}
+
+
+fieldset{
+    display: grid;
+    margin: 0 auto;
+    width: 300px;
+    height: 350px;
+    border-radius: 10px;
+}
+
+.navbar{
+    display: grid;
+    margin-left: end;
+}
+
+.boton{
+    margin-top: 30px;
+    margin-left: 40px;
+    width: 208px;
+    height: 40px;
+}
+
+.boton:hover{
+    cursor: pointer;
+}
+
+.userpass{
+    margin-top: 50px;
+    margin-left: 40px;
+    height: 30px;
+    width: 200px;;
+
+}
+
+.check{
+    margin-top: 30px;
+    margin-left: 40px;
+}
+
+input{
+    border: solid black 1px;
+    border-radius: 5px;
+}
+
+/*switch darkmode*/
+
+
+.theme-checkbox {
+    margin-left: auto;
+    --toggle-size: 16px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 6.25em;
+    height: 3.125em;
+    background: -webkit-gradient(linear, left top, right top, color-stop(50%, #efefef), color-stop(50%, #2a2a2a)) no-repeat;
+    background: -o-linear-gradient(left, #efefef 50%, #2a2a2a 50%) no-repeat;
+    background: linear-gradient(to right, #efefef 50%, #2a2a2a 50%) no-repeat;
+    background-size: 205%;
+    background-position: 0;
+    -webkit-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 99em;
+    position: relative;
+    cursor: pointer;
+    font-size: var(--toggle-size);
+  }
+  
+  .theme-checkbox::before {
+    content: "";
+    width: 2.25em;
+    height: 2.25em;
+    position: absolute;
+    top: 0.438em;
+    left: 0.438em;
+    background: -webkit-gradient(linear, left top, right top, color-stop(50%, #efefef), color-stop(50%, #2a2a2a)) no-repeat;
+    background: -o-linear-gradient(left, #efefef 50%, #2a2a2a 50%) no-repeat;
+    background: linear-gradient(to right, #efefef 50%, #2a2a2a 50%) no-repeat;
+    background-size: 205%;
+    background-position: 100%;
+    border-radius: 50%;
+    -webkit-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+  }
+  
+  .theme-checkbox:checked::before {
+    left: calc(100% - 2.25em - 0.438em);
+    background-position: 0;
+  }
+  
+  .theme-checkbox:checked {
+    background-position: 100%;
+  }

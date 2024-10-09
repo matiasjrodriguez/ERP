@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es-419">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar Contraseña</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav></nav>
+        <input type="checkbox" class="theme-checkbox" id="toggle-dark-mode">
+    </nav>
+    <main>
+        <div>
+            <fieldset>
+                <legend>Cambiar Contraseña</legend>
+                <form id="cambiarContraseñaForm">
+                    <input class="userpass" required type="password" id="nuevaContraseña" placeholder="Nueva Contraseña"> <br>
+                    <input class="userpass" required type="password" id="confirmarContraseña" placeholder="Confirmar Contraseña"> <br> <br>
+                    <input class="boton" type="button" value="Cambiar Contraseña" onclick="cambiarContraseña()">
+                </form>
+            </fieldset>
+        </div>
+    </main>
+    <script>
+        function cambiarContraseña() {
+            let nuevaContraseña = document.getElementById("nuevaContraseña").value;
+            let confirmarContraseña = document.getElementById("confirmarContraseña").value;
+
+            if (nuevaContraseña !== confirmarContraseña) {
+                alert("Las contraseñas no coinciden");
+                return;
+            }
+
+            let datosCambio = {
+                nuevaClave: nuevaContraseña
+            };
+
+            fetch("http://127.0.0.1:8000/cambiar_contraseña", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(datosCambio)
+            }).then(response => {
+                if (response.status === 200) {
+                    alert("Contraseña cambiada exitosamente");
+                    // Redirigir a la página de inicio o de login
+                } else {
+                    alert("Error al cambiar la contraseña");
+                }
+            });
+        }
+
+         /*DARKMODE FUNCTION*/
+    document.getElementById('toggle-dark-mode').addEventListener('click', function() {
+    const body = document.body;
+    if (body.classList.contains('darkbody')) {
+        body.classList.remove('darkbody');
+        body.classList.add('whitemode');
+    } else {
+        body.classList.remove('whitemode');
+        body.classList.add('darkbody');
+    }
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es-419">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/login.css">
+</head>
+
+<body>
+    <nav>
+        <input type="checkbox" class="theme-checkbox" id="toggle-dark-mode">
+    </nav>
+    <main>
+    <div>
+    <fieldset>
+        <legend>Iniciar Sesion</legend>
+        <form>
+            <input class="userpass" required type="text" name="usuario" id="user" placeholder="Usuario">
+            <input class="userpass" required type="password" name="contraseña" id="password" placeholder="Contraseña">
+            <input class="check" type="checkbox">Guardar Contraseña
+            <input class="boton" type="button" value="Iniciar sesion" id="boton" onclick="login()">
+        </form>
+    </fieldset>
+    </div>
+    </main>
+    <script>
+        function login()
+        {
+            let usuario = document.getElementById("user");
+            let contraseña = document.getElementById("password");
+            console.log("Usuario: "+usuario.value);
+            console.log("Contraseña: "+contraseña.value);
+            let datosLogin = {
+                usuario: usuario.value,
+                clave: contraseña.value
+            };
+            fetch("http://127.0.0.1:8000/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(datosLogin)
+            }).then(response => {
+                if(response.status===200){
+                    console.log("Login exitoso");
+                    window.location.href = "/dashboard"
+                }
+                else if(response.status===207){
+                    window.location.href = "cambiar_contraseña.html";
+                }
+                else if(response.status===401){
+                    console.log("Clave incorrecta")
+                }
+                else if(response.status===404){
+                    console.log("Usuario no encontrado")
+                }
+                else{
+                    console.log("Respuesta no encontrada")
+                }
+            })
+        }
+
+        /*DARKMODE FUNCTION*/
+    document.getElementById('toggle-dark-mode').addEventListener('click', function() {
+    const body = document.body;
+    if (body.classList.contains('darkbody')) {
+        body.classList.remove('darkbody');
+        body.classList.add('whitemode');
+    } else {
+        body.classList.remove('whitemode');
+        body.classList.add('darkbody');
+    }
+});
+    </script>
+</body>
+</html>
